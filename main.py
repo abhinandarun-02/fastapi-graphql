@@ -1,22 +1,7 @@
-import strawberry
 from fastapi import FastAPI
 from strawberry.fastapi import GraphQLRouter
+from schema import schema
 
-
-@strawberry.type
-class User:
-    name: str
-    age: int
-
-
-@strawberry.type
-class Query:
-    @strawberry.field
-    def getUser(self) -> User:
-        return User(name="Patrick", age=100)
-
-
-schema = strawberry.Schema(query=Query)
 
 
 graphql_app = GraphQLRouter(schema)
